@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import LoginSignup from "@/components/login-signup"
 import Dashboard from "@/components/dashboard"
@@ -11,7 +11,7 @@ import QuizPage from "@/components/quiz-page"
 import ProgressAnalytics from "@/components/progress-analytics"
 import { useAuth } from "@/context/AuthContext"
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams()
   const auth = useAuth() as any
   const { user, loading } = auth
@@ -116,4 +116,12 @@ export default function Home() {
   }
 
   return <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">{renderPage()}</main>
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
+  )
 }
