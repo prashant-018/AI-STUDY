@@ -218,7 +218,7 @@ export default function AISummary({ onNavigate }: AISummaryProps) {
       setIsExtractingText(true)
       setOcrProgress(0)
 
-      const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
+      const BASE_URL = process.env.NEXT_PUBLIC_API_URL || ""
       const token = getAuthToken()
 
       const imageUrl = `${BASE_URL}/api/documents/${documentId}/view`

@@ -144,7 +144,7 @@ export default function UploadNotes({ onNavigate }: UploadNotesProps) {
     if (files.length === 0 || !title) return
 
     setUploading(true)
-    const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL || ""
     const token = getAuthToken()
 
     try {
@@ -228,7 +228,7 @@ export default function UploadNotes({ onNavigate }: UploadNotesProps) {
     note.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
   )
 
-  const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL || ""
 
   const handleView = (note: UploadedNote) => {
     window.open(`${BASE_URL}/api/documents/${note._id}/view`, '_blank')
